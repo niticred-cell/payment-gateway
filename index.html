@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UPI Payment Page</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>₹3000</h1>
+    <div class="timer" id="timer">00:09:28</div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showTab('direct')">Direct Transfer</button>
+    <button class="tab-btn" onclick="showTab('qr')">Scan QR Code</button>
+  </div>
+
+  <div class="payment-method">
+    <div>Select Payment Method:</div>
+    <button class="method-btn active" onclick="selectMethod('Paytm')">Paytm</button>
+    <button class="method-btn" onclick="selectMethod('PhonePe')">PhonePe</button>
+  </div>
+
+  <div class="warning">
+    Payment can only be made once. Multiple payments are not valid!
+  </div>
+
+  <div id="direct" class="tab-content">
+    <div class="step">
+      <h3>Step 1 — Transfer Details</h3>
+      <div class="field">
+        <label>UPI ID</label>
+        <div class="copy-field">
+          <span id="upi">jio-aly@ybl</span>
+          <button onclick="copyText('upi')">Copy</button>
+        </div>
+      </div>
+      <div class="field">
+        <label>Amount</label>
+        <div class="copy-field">
+          <span id="amount">₹3000</span>
+          <button onclick="copyText('amount')">Copy</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <h3>Step 2 — Submit Details</h3>
+      <input type="text" id="utr" placeholder="Enter UTR / Reference">
+      <button onclick="submitUTR()">Submit</button>
+    </div>
+  </div>
+
+  <div id="qr" class="tab-content" style="display:none;">
+    <h3>Scan QR Code</h3>
+    <div id="qrCode"></div>
+  </div>
+
+  <div class="footer">
+    <div>UPI & BHIM</div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
